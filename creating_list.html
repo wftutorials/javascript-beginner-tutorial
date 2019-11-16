@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vanilla Javascript Tutorial</title>
+</head>
+<body>
+<ul id="list">
+</ul>
+</body>
+<script>
+    var items = ['blue','red','black','brown'];
+    var el = document.getElementById('list');
+    for(var i =0; i< items.length; i++){
+        var listItem = document.createElement("li");
+        listItem.innerHTML = items[i];
+        el.appendChild(listItem);
+    }
+</script>
+</html>

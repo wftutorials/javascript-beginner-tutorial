@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vanilla Javascript Tutorial</title>
+</head>
+<body>
+<p>Getting data from an api</p>
+<ul id="list">
+
+</ul>
+<button id="button">Click Me</button>
+</body>
+<script>
+    const request = new Request('https://jsonplaceholder.typicode.com/users/');
+    var button = document.getElementById('button');
+    var el = document.getElementById('list');
+    button.addEventListener('click', function(){
+        fetch(request)
+            .then(response => {
+                if (response.status === 200) {
+                    return response.json();
+                } else {
+                    throw new Error('Something went wrong on api server!');
+                }
+            })
+            .then(response => {
+                console.log(response);
+                response.forEach(user=>{
+                    var listItem = document.createElement("li");
+                    listItem.innerHTML = user.name +  ' | ' + user.email;
+                    el.appendChild(listItem);
+                })
+            }).catch(error => {
+            console.error(error);
+        });
+    });
+</script>
+</html>

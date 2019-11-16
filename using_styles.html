@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vanilla Javascript Tutorial</title>
+</head>
+<body>
+<p id="messageOutput">We are are going to click a button</p>
+<button id="button">Click Me</button>
+</body>
+<script>
+    var textColor = "black";
+    var el = document.getElementById('button');
+    var output = document.getElementById('messageOutput');
+    el.addEventListener('click', function(){
+        if(textColor == "black"){
+            output.style.cssText = "color: red;";
+            textColor = "red";
+        }else{
+            output.style.cssText = "color: black;";
+            textColor = "black";
+        }
+    })
+</script>
+</html>

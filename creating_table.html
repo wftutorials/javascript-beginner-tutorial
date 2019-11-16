@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vanilla Javascript Tutorial</title>
+</head>
+<body>
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+</style>
+<p>Getting data from an api</p>
+<table style="border: 1px solid #ccc;">
+    <thead>
+    <tr>
+        <td>User Name</td>
+        <td>Email</td>
+        <td>Website</td>
+    </tr>
+    </thead>
+    <tbody id="list">
+
+    </tbody>
+</table>
+<button id="button">Load Table</button>
+</body>
+<script>
+    const request = new Request('https://jsonplaceholder.typicode.com/users/');
+    var button = document.getElementById('button');
+    var el = document.getElementById('list');
+    button.addEventListener('click', function(){
+        fetch(request)
+            .then(response => {
+                if (response.status === 200) {
+                    return response.json();
+                } else {
+                    throw new Error('Something went wrong on api server!');
+                }
+            })
+            .then(response => {
+                console.log(response);
+                response.forEach(user=>{
+                    var layout = '<tr>';
+                    layout += '<td>' + user.name + '</td>';
+                    layout += '<td>' + user.email + '</td>';
+                    layout += '<td>' + user.website + '</td>';
+                    layout += '</tr>';
+                    el.innerHTML += layout;
+                })
+            }).catch(error => {
+            console.error(error);
+        });
+    });
+</script>
+</html>

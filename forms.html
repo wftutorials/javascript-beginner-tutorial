@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vanilla Javascript Tutorial</title>
+</head>
+<body>
+<p>This is a form tutorial</p>
+<form id="my-form">
+    <input id="username" type="text" name="firstname" value="John"/><br>
+    <textarea id="message" name="message">Hello</textarea><br>
+    <select id="cars" name="cars">
+        <option value="nissan">Nissan</option>
+        <option value="toyota">Toyota</option>
+        <option value="bmw">BMW</option>
+        <option value="kia">Kia</option>
+    </select><br>
+    Remember me? <input id="rememberme" type="checkbox" />
+</form>
+<button id="button">Click Me</button>
+</body>
+<script>
+    var button = document.getElementById('button');
+    var remMe = document.getElementById('rememberme');
+    var form = document.getElementById('my-form');
+    button.addEventListener('click', function(){
+        var isRememberme = (remMe.checked==true) ? 'yes' : 'no';
+        var formData = new FormData(form);
+        formData.append('rememberme', isRememberme);
+        for (var value of formData.values()) {
+            console.log(value);
+        }
+    });
+</script>
+</html>

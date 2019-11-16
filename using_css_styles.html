@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vanilla Javascript Tutorial</title>
+</head>
+<style>
+    .big {
+        font-size: 20px;
+    }
+    .small {
+        font-size: 12px;
+    }
+</style>
+<body>
+<p id="messageOutput" class="big">We are are going to click a button</p>
+<button id="button">Click Me</button>
+</body>
+<script>
+    var el = document.getElementById('button');
+    var output = document.getElementById('messageOutput');
+    el.addEventListener('click', function(){
+        if(output.className == "big"){
+            output.className = "small";
+        }else{
+            output.className = "big";
+        }
+    })
+</script>
+</html>
